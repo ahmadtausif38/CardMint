@@ -1,0 +1,44 @@
+server:
+  port:  9091
+
+logging:
+  level:
+    com.cardmint.common.kafka: INFO
+
+spring:
+  application:
+    name: identity-service
+    id: CRDMNTIDY
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+    driver-class-name: org.h2.Driver
+    username: sa
+    password:
+  jpa:
+    hibernate:
+      ddl-auto: create     # or 'create-drop'
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+
+cardmint:
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      acks: all
+      retries: 3
+    consumer:
+      group-id: identity-service-group
+      auto-offset-reset: earliest
+    topics:
+      cardEvents: cardmint.transaction.events
+      transactionEvents: cardmint.card.events
+      accountEvents: cardmint.account.events
+
+

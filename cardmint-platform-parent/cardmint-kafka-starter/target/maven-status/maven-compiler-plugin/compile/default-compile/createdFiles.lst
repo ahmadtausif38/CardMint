@@ -1,0 +1,7 @@
+com\cardmint\common\kafka\config\KafkaProducerConfig.class
+com\cardmint\common\kafka\config\CardMintKafkaProperties$Consumer.class
+com\cardmint\common\kafka\config\CardMintKafkaProperties$Producer.class
+com\cardmint\common\kafka\config\CardMintKafkaProperties$Topics.class
+com\cardmint\common\kafka\config\KafkaAutoConfiguration.class
+com\cardmint\common\kafka\service\KafkaProducerService.class
+com\cardmint\common\kafka\config\CardMintKafkaProperties.class
