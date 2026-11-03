@@ -1,46 +1,38 @@
-spring:
-  application:
-    name: cardmint-account-service
-    id: CRDMNTACC
+  spring:
+    application:
+      name: cardmint-account-service
 
-server:
-  port:  8082
+    datasource:
+      url: jdbc:postgresql://localhost:5432/cardmint_account_db
+      driver-class-name: org.postgresql.Driver
+      username: postgres
+      password: test123
 
-logging:
-  level:
-    com.cardmint.common.kafka: INFO
-
-
-  datasource:
-    url: jdbc:h2:mem:testdb
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
-  jpa:
-    hibernate:
-      ddl-auto: create     # or 'create-drop'
-    show-sql: true
-    properties:
+    jpa:
       hibernate:
-        format_sql: true
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
+        ddl-auto: update
+      show-sql: true
+      properties:
+        hibernate:
+          format_sql: true
 
-cardmint:
-  kafka:
-    bootstrap-servers: localhost:9092
-    producer:
-      acks: all
-      retries: 3
-    consumer:
-      group-id: identity-service-group
-      auto-offset-reset: earliest
-    topics:
-      cardEvents: cardmint.transaction.events
-      transactionEvents: cardmint.card.events
-      accountEvents: cardmint.account.events
+  server:
+    port: 8082
 
+  logging:
+    level:
+      com.cardmint.common.kafka: INFO
 
-
+  cardmint:
+    kafka:
+      bootstrap-servers: localhost:9092
+      producer:
+        acks: all
+        retries: 3
+      consumer:
+        group-id: account-service-group
+        auto-offset-reset: earliest
+      topics:
+        cardEvents: cardmint.card.events
+        transactionEvents: cardmint.transaction.events
+        accountEvents: cardmint.account.events

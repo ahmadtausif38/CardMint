@@ -1,9 +1,10 @@
-package com.cardmint.identity.dto;
+package com.cardmint.identity.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-public record AddressDTO(
+public record AddressRequest(
+
         @NotBlank(message = "Address Line 1 is required")
         @Size(max = 150, message = "Address Line 1 must be at most 150 characters")
         String line1,

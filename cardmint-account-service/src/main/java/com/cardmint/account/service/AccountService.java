@@ -26,6 +26,7 @@ public class AccountService {
         String accountId = generateAccountId(); // private method
         Account account = Account.builder()
                 .accountId(accountId)
+                .userId(requestDTO.userId())
                 .currency("INR")
                 .balance(BigDecimal.ZERO)
                 .status(String.valueOf(StatusEnum.ACTIVE))

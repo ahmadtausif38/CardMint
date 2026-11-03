@@ -2,7 +2,8 @@ package com.cardmint.identity.controller;
 
 //import com.cardmint.identity.aspect.LogginAnnotation;
 import com.cardmint.identity.aspect.LogginAnnotation;
-import com.cardmint.identity.dto.CreateUserRequest;
+import com.cardmint.identity.dto.request.CreateUserRequest;
+import com.cardmint.identity.dto.response.ApiResponse;
 import com.cardmint.identity.entity.UserEntity;
 import com.cardmint.identity.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -22,12 +23,12 @@ public class IdentityController {
 
     @GetMapping("/test")
     public String testing(){
-        return "I'm working fine dude :)";
+        return "Identity Service is working fine..";
     }
 
     @PostMapping("/register-user")
     @LogginAnnotation
-    public UserEntity register(@RequestBody CreateUserRequest request){
+    public ApiResponse register(@RequestBody CreateUserRequest request){
         logger.info("Registering user");
         return userService.registerUser(request);
     }
