@@ -1,10 +1,17 @@
-package com.cardmint.identity.dto;
+package com.cardmint.identity.dto.request;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
+
 import java.time.LocalDate;
 
-public record UserRequestDTO(
+public record CreateUserRequest(
+//        String fullName,
+//        String email,
+//        String phone,
+//        String pan,
+//        LocalDate dateOfBirth,
+//        AddressRequest address
         @NotBlank(message = "Full name is required")
         @Size(max = 150, message = "Full name must be at most 150 characters")
         String fullName,
@@ -26,5 +33,5 @@ public record UserRequestDTO(
 
         @Valid
         @NotNull(message = "Address is required")
-        AddressDTO address
+        AddressRequest address
 ) {}

@@ -46,6 +46,9 @@ public class UserEntity {
     @Column(name = "pan_hash", length = 64, nullable = false)
     private String panHash;
 
+    @Column(name = "pan_encrypted", nullable = false, length = 512)
+    private String panEncrypted;
+
     @Column(name = "date_of_birth", nullable = false)
     private LocalDate dateOfBirth;
 

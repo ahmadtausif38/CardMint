@@ -1,5 +1,5 @@
 server:
-  port:  9091
+  port:  8083
 
 logging:
   level:
@@ -11,21 +11,18 @@ spring:
     id: CRDMNTIDY
 
   datasource:
-    url: jdbc:h2:mem:testdb
-    driver-class-name: org.h2.Driver
-    username: sa
-    password:
+    url: jdbc:postgresql://localhost:5432/cardmint_identity_db
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: test123
+
   jpa:
     hibernate:
-      ddl-auto: create     # or 'create-drop'
+      ddl-auto: update
     show-sql: true
     properties:
       hibernate:
         format_sql: true
-  h2:
-    console:
-      enabled: true
-      path: /h2-console
 
 cardmint:
   kafka:
@@ -37,8 +34,13 @@ cardmint:
       group-id: identity-service-group
       auto-offset-reset: earliest
     topics:
-      cardEvents: cardmint.transaction.events
-      transactionEvents: cardmint.card.events
+      cardEvents: cardmint.card.events
+      transactionEvents: cardmint.transaction.events
       accountEvents: cardmint.account.events
+
+  security:
+    pan:
+      hmac-key: "L2hsdCaFxaY07CyzeSyJ0q7brZCRopiRQjDvwUskW9I="
+      encryption-key: "bORLSNm+HSWluIdDCA8OfBHbOK/5BCw+ZBYiONoqSzY="
 
 
